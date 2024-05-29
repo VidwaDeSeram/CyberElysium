@@ -109,7 +109,11 @@ class AuthController extends Controller
             throw new OAuthException('invalid_credentials_provided');
         }
 
-        return $this->responseWithToken($token);
+        return response()->json([
+            'message' => 'Login successful',
+            'redirect_url' => route('dashboard'), // Assuming you have a route named 'dashboard'
+            'token' => $token
+        ]);
     }
 
     /**
